@@ -1,1 +1,121 @@
-style.css
+/* SOMMAIRE */
+/* 1. Basics*/
+/* 2. header */
+
+
+
+/* 1. Basics*/
+
+body {
+	background-color: #2D2D2A;
+	color: white;
+	margin: 40px 90px 40px 90px;
+}
+
+img {
+	width: 100%;
+}
+
+h2 {
+	font-size: 1.4em;
+    color: #20fc8f;
+    border-bottom: 1px solid #20fc8f;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+}
+
+
+/* 2. header, nav */
+header h1 {
+	display: none;
+}
+
+#logoHeader {
+	width: 10%;
+	margin: auto;
+}
+
+nav {
+	margin-bottom: 60px;
+	display: flex;
+	justify-content: center;
+}
+
+nav ul {
+	display: flex;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.nav-pills>li>a {
+	color: #20FC8F;
+}
+
+.nav-pills>li>a:hover {
+	background-color: #20FC8F;
+	color: black;
+}
+
+.nav-pills>li>a:focus {
+	background-color: #3F5E5A;
+	color: white;
+}
+
+
+
+/* diaporama */
+
+#slider {
+	position: relative;
+	width: 500px;
+	height: 350px;
+	margin: auto;
+	display: flex;
+    align-items: center;
+}
+
+.sliderImg {
+	position: absolute;
+	width: 500px;
+	height: 350px;
+}
+
+.sliderBtn {
+	z-index: 600;
+    position: absolute;
+    background-color: #00000000;
+    border: none;
+    padding: 15px;
+}
+
+.sliderBtn:hover {
+    background-color: #00000075;
+}
+
+#chevronLeft {
+ 	border-radius: 0px 5px 5px 0px;
+ 	left: 0px;
+}
+
+#chevronRight {
+	border-radius: 5px 0px 0px 5px;
+	right: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* footer */
+footer {
+	margin: 60px 60px 0px 60px;
+	display: flex;
+	justify-content: center;
+	color: gray;
+}

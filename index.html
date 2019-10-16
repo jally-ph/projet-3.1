@@ -3,19 +3,96 @@
 <head>
 	<meta charset="utf-8">
 	<title>Projet 3</title>
+	
+	<!-- bootstrap - Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 	<!-- css -->
 	<link rel="stylesheet" type="text/css" href="public/css/style.css">
 	<!-- jQuery -->
 	<script type="text/javascript" src="public/js/script.js"></script>
 	<script type="text/javascript" src="public/js/jquery-3.4.1.js"></script>
+	<!-- mapbox -->
+	<script src='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
+	<!-- FONTAWESOME -->
+    <script src="https://kit.fontawesome.com/7e70710549.js"></script>
+
+    <script type="text/javascript" src="public/js/mapTest.js"></script>
 
 </head>
 <body>
-	<h1>Title</h1>
+	<header>
+		<div id="logoHeader">
+			<!--display none on h1 -->
+			<h1>Projet 3</h1>
+			<img src="public/img/logoCyclick.png">
+		</div>
 
-	<script type="text/javascript">
-		$('h1').fadeOut('slow');
+		<nav>
+			<ul class="nav nav-pills">
+			  <li role="presentation" ><a href="#">Accueil</a></li>
+			  <li role="presentation" ><a href="#diapo">Diaporama</a></li>
+			  <li role="presentation" ><a href="#carte">Carte</a></li>
+			</ul>
+		</nav>	
+	</header>
+
+
+
+	
+	<section id="section1">
+		<h2 id="diapo"><i class="far fa-lightbulb"></i> Diaporama</h2>
+
+		<div>
+			<!--les photos-->
+			<div id="slider">
+
+				<img src="public/img/photo1.jpg" alt="photo du slider" class="sliderImg">
+				<img src="public/img/photo2.jpg" alt="photo du slider" class="sliderImg">
+				<img src="public/img/photo3.jpg" alt="photo du slider" class="sliderImg">
+				<img src="public/img/photo4.jpg" alt="photo du slider" class="sliderImg">
+				<!--flèches-->
+				<button class="sliderBtn" id="chevronLeft"><i class="fas fa-chevron-left fa-2x"></i></button>
+				<button class="sliderBtn" id="chevronRight"><i class="fas fa-chevron-right fa-2x"></i></button>
+				
+			</div>
+			
+		</div>
+	</section>
+
+
+
+
+	<section id="section2">
+		<h2 id="carte"><i class="fas fa-map-marked-alt"></i> Carte</h2>
+
+		<div id='map' style='width: 400px; height: 300px;'></div>
+		<script>
+			//si on met tt ça dans une class
+		  mapboxgl.accessToken = 'pk.eyJ1IjoiamFsbHktcGgiLCJhIjoiY2swdGMwNHZjMGFzZDNicGU2bHVhODkwbCJ9.T83X_8s7_gWjdH67B7Zcew';
+		  var map = new mapboxgl.Map({
+		    container: 'map',
+		    style: 'mapbox://styles/mapbox/streets-v11',
+		    //coordonnées Orléans
+		    center: [1.905975, 47.900959],
+			zoom: 4
+		   });
+		</script>
+		
+
+	</section>
+
+
+
+	<footer>
+		<p>Site réalisé par Jally Phejar 2019 - 2020</p>
+	</footer>
+	
+	
+	<script type="text/javascript" >
+		dot();
 	</script>
+	  
 
 </body>
 </html>
