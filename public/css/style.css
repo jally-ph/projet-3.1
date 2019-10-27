@@ -72,38 +72,61 @@ nav ul {
 	margin: auto;
 	display: flex;
     align-items: center;
+  justify-content: center;
 }
 
 .sliderImg {
 	position: absolute;
 	width: 500px;
-	height: 350px;
+	height: 320px;
+  overflow: hidden;
+}
+
+.pImg {
+  position: absolute;
+  bottom: 0px;
+  padding: 20px;
+  margin: 0px;
+  opacity:0.4;
 }
 
 .sliderBtn {
-	z-index: 600;
     position: absolute;
     background-color: #00000000;
     border: none;
-    padding: 15px;
+    padding: 45px;
+  color: white;
+  opacity:0;
 }
 
 .sliderBtn:hover {
-    background-color: #00000075;
+   opacity:0.7;
 }
 
-#chevronLeft {
- 	border-radius: 0px 5px 5px 0px;
- 	left: 0px;
+#chevronLeft{
+    left : 0px;
+    z-index: 4;
+}
+#chevronRight{
+  right : 0px;
+   z-index: 4;
 }
 
-#chevronRight {
-	border-radius: 5px 0px 0px 5px;
-	right: 0px;
+#chevronLeft:hover {
+  opacity: 0.7;
+}
+#chevronRight:hover {
+  opacity: 0.7;
 }
 
 
+#pause {
+  z-index: 4;
+}
 
+#play {
+  z-index: 3;
+}
 
 
 

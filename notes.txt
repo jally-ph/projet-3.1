@@ -2,10 +2,10 @@ A FAIRE [✖️✔️] :
 
 ✔️ S'inscrire à JCDecaux
 ✔️ Récup clé api [ 0dd39fb7d2b169fac1860b7627dda27fab246e44 ]
-_ mettre en place tte la structure Html
+✔️ mettre en place tte la structure Html
 ✔️ Commencer le diapo
-_ voir les différentes étapes pr la création du diapo
-_ 
+✔️ voir les différentes étapes pr la création du diapo
+
 
 
 
@@ -15,7 +15,7 @@ STRUCTURE HTML :
 
 ✔️ head	 ✔️ body
 ✔️ header 	
-✔️ titre h1	 ✔️ nav (menu) 	_ ico 	✔️ pages ✖️(single page)
+✔️ titre h1	 ✔️ nav (menu) 	✔️ ico 	✔️ pages ✖️(single page)
 ✔️ footer
 
 
@@ -27,18 +27,17 @@ DIAPO
 
 les images du diapo doivent être des objets
 à définir pr chaq img :
-- tailles
-- position
-- temps de relai (setTimeout)
+✔️ tailles
+✔️ position l'une derrière l'autre
+✔️ zindex (1 de base), puis fonction qui change le zindex dans un temps imparti (setTimeout)
+✔️ automatique (temps de relai (setTimeout))
+- puis avec clavier
 
-- boutons : avance, recul et pause
+
+✔️ boutons : avance, recul et pause
 - même boutons avec clavier :
 http://vb.net-informations.com/gui/key-press-vb.htm
 
-
-ORDRE ACTIONS :
-
-_ 
 
 
 
