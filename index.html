@@ -161,6 +161,20 @@
 		    if (plus<0) {plus=3}
 		}));
 
+
+		//avec clavier
+		document.addEventListener("keydown", function(event) {
+		 if (event.which===37){
+		   plusSlides(-2);
+		    if (plus<0) {plus=3}
+		  }
+		  if (event.which===39){
+		    plusSlides(0);
+		    change();
+		  }
+		   /*console.log(event.which);*/
+		})
+
 		</script>
 	  
 
