@@ -2,23 +2,24 @@
 	//function pr afficher 1 img
 
 
-	
+let plus = 0;	
+let slides = document.getElementsByClassName("sliderImg");
+
 
 function change(){
 	  
-	let plus = 0;
-
 	let i;
-	let slides = document.getElementsByClassName("sliderImg");
+	
 	for (i = 0; i < slides.length; i++) {
 	    slides[i].setAttribute("style", "z-index: 1");
+	    
 	}
 	plus++;
 	if (plus> slides.length) {plus = 1}
 	slides[plus-1].setAttribute("style", "z-index: 2");
 	let x = setTimeout(change, 5000); 
-	  
-	  
+
+	//chevrons
 	if ($("#chevronRight").click(function(){
 	    slides[plus-1].setAttribute("style", "z-index: 1");
 	    plus++;
@@ -29,13 +30,9 @@ function change(){
 	    x = setTimeout(change, 5000); 
 	    console.log("chevronRight Ok!");
 	  }));
-	  
-
-	//chevrons
-	if ($("#chevronLeft").click(function(){
-	  
-	  //!!je devrais p-ê mettre ça dans une fonction
+	 
 	
+	if ($("#chevronLeft").click(function(){
 	 	slides[plus-1].setAttribute("style", "z-index: 1");
 	    plus--;
 	   	if (plus<1) {plus=4}
@@ -45,7 +42,6 @@ function change(){
 	    console.log("chevronLeft Ok!");
 	 
 	}));
-	  
 
 	//pause & play
 	if ($("#pause").click(function(){
@@ -55,7 +51,6 @@ function change(){
 	    console.log("Pause Ok!");
 	}));
 	  
-	
 
 	if ($("#play").click(function() { 
 	    play.setAttribute("style", "z-index: 3");
@@ -63,7 +58,6 @@ function change(){
 	    console.log("Play Ok!");
 	}));
 
-	
 
 	//avec clavier
 	document.addEventListener("keydown", function(event) {
@@ -93,5 +87,12 @@ function change(){
 	}
 
 
+	  
+
+	
+
+	
+
+	
 
 
