@@ -1,8 +1,13 @@
 
 change();
 
-var stations = new MapData();
-//zoom sur toulouse
+var mapData = new MapData();
+mapData.getMap();
+
+
+
+
+//✔️zoom sur toulouse
 //boucle sur ce tableau
 //mapbox: fonction points marqueurs
 //https://docs.mapbox.com/help/tutorials/markers-js/

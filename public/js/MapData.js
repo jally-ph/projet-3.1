@@ -1,5 +1,8 @@
-class MapData {
 
+
+class MapData  {
+
+	
 
 
 	//complete data
@@ -12,7 +15,9 @@ class MapData {
 		request.onreadystatechange = function() {
 		    if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
 		        let response = JSON.parse(this.responseText);
-		        console.log(response);
+		        /*console.log(response);*/
+		        //utiliser une fonction pr récup ??
+		      
 		    }
 		};
 		request.open(method, url);
@@ -20,15 +25,39 @@ class MapData {
 		
 	}
 
+
+
 	//get the map
 	getMap () {
-		
+		mapboxgl.accessToken = 'pk.eyJ1IjoiamFsbHktcGgiLCJhIjoiY2swdGMwNHZjMGFzZDNicGU2bHVhODkwbCJ9.T83X_8s7_gWjdH67B7Zcew';
+		  var map = new mapboxgl.Map({
+		    container: 'map',
+		    style: 'mapbox://styles/mapbox/streets-v11',
+		    //coordonnées Orléans
+		    center: [1.433333, 43.600000],
+			zoom: 10
+		   });
 	}
 
-	//recup positions only - fonctionne pas encore!
+	//get positions
+	getPositions () {
+		
+		/*for (var i = 0; i >= 0; i++) {
+			Things[i]
+		}*/
+
+	}
+
+	
+
+
 	
 
 }
 
+
+
+	
+   
 
 
