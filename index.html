@@ -82,26 +82,58 @@
 	<section id="section2">
 		<h2 id="carte"><i class="fas fa-map-marked-alt"></i> Carte</h2>
 
-		<div id='map' style='width: 400px; height: 300px;'></div>
+		<div id="zoneReservation">
+			
+			<div id='map' style='width: 400px; height: 300px;'></div>
+
+			<!-- formulaire réservation -->
+			<form action="#" method="POST">
+				<label>Nom</label>
+				<input type="text" name="nom" id="inputNom">
+
+				<label>Prénom</label>
+				<input type="text" name="prenom" id="inputPrenom">
+
+				<!-- canvas signature -->
+				<div id="displayCanvas" style="display:none">
+					<p>Une dernière étape avant de réserver votre vélo, signez ici !</p>
+					<div id="canvasDiv"></div>
+					<p id="clear">Effacer</p>
+				</div>
+
+				<!-- buttons submit -->
+				<button type="submit" name="submit" id="btnReserv">Réserver un vélo</button>
+				<button type="submit" name="submit" id="btnValid" style="display:none">Valider</button>
+
+				<!-- messages d'erreur-->
+				<p id="zoneErrorPrenom"></p>
+				<p id="zoneErrorNom"></p>
 
 
-		<!-- formulaire réservation -->
-		<form>
-			<label>Nom</label>
-			<input type="text" name="name">
+				<!-- timer -->
+					<div id="zoneTimer" style="display:none">
+						<p>
+							Il vous reste : 
+						</p>
+						<p id="timer">
+						20 : 00 
+						</p>
+						<p>
+							pour confirmer votre réservation 
+						</p>
+					</div>
+	
+			</form>
 
-			<label>Prénom</label>
-			<input type="text" name="name">
+		</div>
 
-			<input type="submit" name="submit" value="Réserver un vélo">
-		</form>
+		
 
-		<div id="canvasDiv"></div>
-		<button id="clear"></button>
 		
 		
 
 	</section>
+
 
 
 
@@ -117,15 +149,18 @@
 	<script src='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
 	<script src='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
 
-
+	<!-- timer -->
+	<script type="text/javascript" src="public/js/Timer.js">
+	</script>
 	<!-- sketch -->
 	<script type="text/javascript" src="public/js/Sketch.js"></script>
+	<!-- form -->
+	<script type="text/javascript" src="public/js/Form.js"></script>
 	<!-- map -->
 	<script type="text/javascript" src="public/js/Ajax.js"></script>
     <script type="text/javascript" src="public/js/MapData.js"></script>
     <!-- diapo -->
-    <script type="text/javascript" src="public/js/diapo.js"></script>
-    <script type="text/javascript" src="public/js/Test.js"></script>
+    <script type="text/javascript" src="public/js/Diapo.js"></script>
     <!-- main -->
     <script type="text/javascript" src="public/js/main.js"></script>
 

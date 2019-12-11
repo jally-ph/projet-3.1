@@ -8,26 +8,11 @@ class MapData  {
 
 		this.method = "GET";
 		this.url = "https://api.jcdecaux.com/vls/v1/stations?contract=toulouse&apiKey=0dd39fb7d2b169fac1860b7627dda27fab246e44";
-		
-		//this.getMap();
-		
 		this.ajax = ajax; //ajax déterminé dans main.js
 		this.mapInfo();
 		
 	}
 
-
-	//get the map
-	/*getMap () {
-		mapboxgl.accessToken = 'pk.eyJ1IjoiamFsbHktcGgiLCJhIjoiY2swdGMwNHZjMGFzZDNicGU2bHVhODkwbCJ9.T83X_8s7_gWjdH67B7Zcew';
-		var map = new mapboxgl.Map({
-		    container: 'map',
-		    style: 'mapbox://styles/mapbox/streets-v11',
-		    //coordonnées Toulouse
-		    center: [1.433333, 43.600000],
-			zoom: 10
-		   });
-	}*/
 
 
 	
@@ -62,6 +47,7 @@ class MapData  {
 						var lat = markers[i]["position"]["lat"];
 						var long = markers[i]["position"]["lng"];
 						var address = markers[i]["address"];
+						var availableBikes = markers[i]["available_bikes"];
 						
 
 						var geojson = {
@@ -73,8 +59,9 @@ class MapData  {
 						      coordinates: [long, lat]
 						    },
 						    properties: {
-						      title: 'Mapbox',
-						      description: [address]
+						      title : address,
+						      description: availableBikes + " vélos libres"
+						      
 						    }
 						  },
 						 ]

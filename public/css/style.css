@@ -8,8 +8,9 @@
 
 body {
 	background-color: #b7dfe3;
-	color: white;
+	
 	margin: 40px 90px 40px 90px;
+  
 }
 
 img {
@@ -145,12 +146,48 @@ color: red;
   color: black;
 }
 
+.mapboxgl-popup-content h3 {
+  font-size: 1em;
+}
+
 
 /* sketch */
+
 #canvas {
   background-color: white;
   border: 1px solid black;
 }
+
+#zoneReservation {
+  display: flex;
+  justify-content: space-around;
+}
+
+#zoneReservation form {
+  display: flex;
+  flex-direction: column;
+}
+
+#zoneReservation form button {
+  background-color: red;
+}
+
+
+
+/* form */
+
+
+
+/* timer */
+#zoneTimer{ 
+  background-color: red;
+}
+
+#zoneTimer p{
+  margin: 10px;
+  text-align: center;
+}
+
 
 /* footer */
 footer {

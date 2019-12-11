@@ -3,6 +3,8 @@ class Sketch {
 	//http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/
 
 	constructor() {
+		
+
 		var canvasDiv = document.getElementById('canvasDiv');
 		var canvas = document.createElement('canvas');
 		canvas.setAttribute('width', '300');
@@ -15,6 +17,7 @@ class Sketch {
 			canvas = G_vmlCanvasManager.initElement(canvas);
 		}
 		var context = canvas.getContext("2d");
+		
 
 		$('#canvas').mousedown(function(e){
 		  var mouseX = e.pageX - this.offsetLeft;
@@ -23,6 +26,11 @@ class Sketch {
 		  paint = true;
 		  addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
 		  redraw();
+
+		  //c'est seulement après avoir écrit que le bouton apparaît:
+
+		  //nouveau btn
+			document.getElementById('btnValid').style.display = 'block';
 		});
 
 		$('#canvas').mousemove(function(e){
@@ -72,16 +80,21 @@ class Sketch {
 		  }
 		}
 
+
+	
 				//button clear
 		var clear = document.getElementById('clear');
-		clear.innerHTML = "Effacer tout";
-		clear.addEventListener('click', function () {
-			document.location.reload(true);
+		clear.addEventListener('click', function (e) {
+			e.preventDefault;
+			//context.beginPath();
+			// context.rect(0,0, 300, 200);
+			// context.fillStyle = "white";
+			// context.fill();
+			context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
+			
 		  	});
 
 	}
-	
-
 
 }
 
