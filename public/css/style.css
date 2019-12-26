@@ -7,10 +7,13 @@
 /* 1. Basics*/
 
 body {
-	background-color: #b7dfe3;
 	
-	margin: 40px 90px 40px 90px;
-  
+}
+
+#containerAll{
+  background-color: white;
+  color: #4a4a4a;
+  font-family: 'Jaldi', sans-serif;
 }
 
 img {
@@ -18,58 +21,78 @@ img {
 }
 
 h2 {
-	font-size: 1.4em;
-    color: #20fc8f;
-    border-bottom: 1px solid #20fc8f;
-    margin-bottom: 20px;
-    padding-bottom: 8px;
+	font-size: 4.5em;
+  
+  /*padding-bottom: 8px;*/
+  font-family: 'Bebas Neue', cursive;
+  transform: rotate(-5deg);
+    -moz-transform: rotate(-5deg);
+    -webkit-transform: rotate(-5deg);
+    -khtml-transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
+    margin: 110px;
 }
 
 
 /* 2. header, nav */
-header h1 {
-	display: none;
-}
+header h1 { display: none;}
+
+header { display: flex; 
+  justify-content: center; 
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  box-shadow: 0 3px 5px rgba(0,0,0,.15);
+  background-color: white;
+  z-index: 300;}
 
 #logoHeader {
-	width: 10%;
-	margin: auto;
+	width: 5%;
+  margin-right: 50px;
 }
 
 nav {
-	margin-bottom: 60px;
-	display: flex;
-	justify-content: center;
+	
 }
 
 nav ul {
 	display: flex;
-    justify-content: space-between;
-    width: 20%;
+  justify-content: space-between;
+    
 }
 
 .nav-pills>li>a {
-	color: #20FC8F;
+  color: #4a4a4a;
+  font-size: 1.4em;
 }
 
 .nav-pills>li>a:hover {
-	background-color: #20FC8F;
-	color: black;
-}
-
-.nav-pills>li>a:focus {
-	background-color: #3F5E5A;
-	color: white;
+  background-color: white;
+	
 }
 
 
 
 /* diaporama */
 
+#section1{
+  display: flex;
+  margin: 42px 0px 50px 0px;
+  padding: 100px 0px;
+  background: url("../img/bike2.jpg") no-repeat;
+  background-position:right bottom;
+}
+
+#titleDiapo{
+  color: white;
+}
+
 #slider {
 	position: relative;
-	width: 500px;
-	height: 350px;
+	width: 700px;
+	height: 400px;
 	margin: auto;
 	display: flex;
     align-items: center;
@@ -78,8 +101,8 @@ nav ul {
 
 .sliderImg {
 	position: absolute;
-	width: 500px;
-	height: 320px;
+	width: 700px;
+	height: 400px;
   overflow: hidden;
 }
 
@@ -132,7 +155,7 @@ nav ul {
 
 /* map */
 .fa-map-marker-alt {
-color: red;
+  color: #4c66ee;
   cursor: pointer;
 }
 
@@ -150,48 +173,102 @@ color: red;
   font-size: 1em;
 }
 
+/* form + canvas */
 
-/* sketch */
-
-#canvas {
+/*#canvas {
   background-color: white;
   border: 1px solid black;
-}
+}*/
 
 #zoneReservation {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  margin: 40px 20px 40px 20px;
 }
 
 #zoneReservation form {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    width: 23%;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.15);
 }
 
-#zoneReservation form button {
-  background-color: red;
+#zoneReservation input{
+    border: 1px solid #e6e6e6fa;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0px;
 }
 
+#adresseMap{
+    padding: 10px;
+    margin: 10px 0px;
+    color: #5a7ad5;
+    border: 1px solid #e6e6e6fa;
+    border-radius: 10px;
+}
 
+canvas#canvas{
+  width: 100%;background: #FFF;margin-top: 10px;
+  border: 1px solid #e6e6e6fa;
+}
 
-/* form */
+#btnReserv, #btnValid, #btnConfirm, #clearCanvas, #btnCancel {
+  background-color: #9cc952e0;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px 0px;
+  border: 1px solid #48cd5e00;
+  color: white;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.5em;
+}
 
+#btnCancel {
+  background-color: #0000004f;
+}
 
 
 /* timer */
 #zoneTimer{ 
-  background-color: red;
+  background-color: #28376e;
+  color: white;
+  margin: 10px 0px;
+  text-align: center;
+  padding: 10px;
+  font-size: 1.3em;
 }
 
-#zoneTimer p{
-  margin: 10px;
-  text-align: center;
+#reservConfirm{
+    background-color: #28376e;
+    color: white;
+    margin: 10px 0px;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.3em;
+}
+
+
+/*section 3*/
+
+#section3{
+  /*background: url("../img/pub1.jpg");*/
+}
+
+#divPub{
+    background: url(../img/pub1.png) no-repeat;
+    width: 100%;
+    height: 400px;
+    background-position: right bottom;
+    margin: 200px 0px 0px 0px;
 }
 
 
 /* footer */
 footer {
-	margin: 60px 60px 0px 60px;
+	margin: 30px 60px 0px 60px;
 	display: flex;
 	justify-content: center;
 	color: gray;

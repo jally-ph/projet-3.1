@@ -11,6 +11,9 @@
 	
 	<link href='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
 	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css' rel='stylesheet' />
+
+	<!--fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Jaldi&display=swap" rel="stylesheet">
 	
 
 
@@ -18,48 +21,48 @@
 	
 </head>
 <body>
-
-
-	<header>
+	<div id="containerAll">
+		
+		<header>
 		<div id="logoHeader">
 			<!--display none on h1 -->
 			<h1>Projet 3</h1>
-			<img src="public/img/logoCyclick.png">
+			<img src="public/img/cyclick.png">
 		</div>
 
 		<nav>
 			<ul class="nav nav-pills">
 			  <li role="presentation" ><a href="#">Accueil</a></li>
-			  <li role="presentation" ><a href="#diapo">Diaporama</a></li>
-			  <li role="presentation" ><a href="#carte">Carte</a></li>
+			  <li role="presentation" ><a href="#titleDiapo">Réservez votre vélo ?</a></li>
+			  <li role="presentation" ><a href="#carte">Carte des stations</a></li>
 			</ul>
 		</nav>	
 	</header>
 
 
 	<section id="section1">
-		<h2 id="diapo"><i class="far fa-lightbulb"></i> Diaporama</h2>
+		<h2 id="titleDiapo">Comment réserver <br/> votre vélo ?</h2>
 
-					<!--les photos-->
+		<!--les photos-->
 		<div id="slider">
 
 	        <div class="sliderImg">
-	         <img src="https://images.unsplash.com/photo-1500514966906-fe245eea9344?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80" alt="photo du slider" id="img1" >
+	         <img src="public/img/4.png" alt="photo du slider" id="img1" >
 	          <p class="pImg">1/4</p>
 	        </div>
 	        
 	        <div class="sliderImg">
-	         <img src="https://images.unsplash.com/photo-1455325528055-ad815afecebe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="photo du slider" id="img2" >
+	         <img src="public/img/5.png" alt="photo du slider" id="img2" >
 	          <p class="pImg">2/4</p>
 	        </div>
 
 	        <div class="sliderImg">
-	          <img src="https://images.unsplash.com/photo-1515008524437-3e64c3905d51?ixlib=rb-1.2.1&auto=format&fit=crop&w=995&q=80" alt="photo du slider" id="img3" >
+	          <img src="public/img/6.png" alt="photo du slider" id="img3" >
 	          <p class="pImg">3/4</p>
 	        </div>
 	        
 	        <div class="sliderImg">
-	           <img src="https://images.unsplash.com/photo-1524946274118-e7680e33ccc5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="photo du slider" id="img4" >
+	           <img src="public/img/3.png" alt="photo du slider" id="img4" >
 	          <p class="pImg">4/4</p>
 	        </div>
 	       
@@ -80,40 +83,17 @@
 
 
 	<section id="section2">
-		<h2 id="carte"><i class="fas fa-map-marked-alt"></i> Carte</h2>
+		<h2 id="carte">Trouvez la station <br/> la plus proche</h2>
 
 		<div id="zoneReservation">
 			
-			<div id='map' style='width: 400px; height: 300px;'></div>
-
-			<!-- formulaire réservation -->
-			<form action="#" method="POST">
-				<label>Nom</label>
-				<input type="text" name="nom" id="inputNom">
-
-				<label>Prénom</label>
-				<input type="text" name="prenom" id="inputPrenom">
-
-				<!-- canvas signature -->
-				<div id="displayCanvas" style="display:none">
-					<p>Une dernière étape avant de réserver votre vélo, signez ici !</p>
-					<div id="canvasDiv"></div>
-					<p id="clear">Effacer</p>
-				</div>
-
-				<!-- buttons submit -->
-				<button type="submit" name="submit" id="btnReserv">Réserver un vélo</button>
-				<button type="submit" name="submit" id="btnValid" style="display:none">Valider</button>
-
-				<!-- messages d'erreur-->
-				<p id="zoneErrorPrenom"></p>
-				<p id="zoneErrorNom"></p>
-
+			<div>
+				<div id='map' style='width: 700px; height: 600px;'></div>
 
 				<!-- timer -->
 					<div id="zoneTimer" style="display:none">
 						<p>
-							Il vous reste : 
+							Un vélo a été retenu pour vous à cette station. Il vous reste : 
 						</p>
 						<p id="timer">
 						20 : 00 
@@ -122,16 +102,52 @@
 							pour confirmer votre réservation 
 						</p>
 					</div>
+
+				<!-- message confirm reserv -->
+					<div id="reservConfirm" style="display:none">
+						<p> <i class="fas fa-thumbs-up fa-2x"></i> 
+						 Votre réservation est bien confirmée ! Votre vélo vous attend !</p>
+					</div>
+			</div>
+			
+
+			<!-- formulaire réservation -->
+			<form action="#" method="POST">
+				<label>Adresse</label>
+				<input type="hidden" name="adresse" id="adresseMapInput">
+				<p id="adresseMap"></p>
+
+				<label>Nom</label>
+				<input type="text" name="nom" id="inputNom">
+
+				<label>Prénom</label>
+				<input type="text" name="prenom" id="inputPrenom">
+
+				<!-- canvas signature -->
+				<div id="canvasDiv" style="display:none">
+					<p>Une dernière étape avant de réserver votre vélo, signez ici !</p>
+					<button id="clearCanvas" type="button">Effacer</button>
+				</div>
+
+				<!-- buttons submit -->
+				<button type="submit" name="submit" id="btnReserv">Réserver un vélo</button>
+				<button type="submit" name="submit" id="btnValid" style="display:none">Valider</button>
+				<button type="submit" name="submit" id="btnConfirm" style="display:none">Confirmer votre réservation</button>
+				<button type="submit" name="submit" id="btnCancel" style="display:none">Annuler</button>
+
+				<!-- messages d'erreur-->
+				<p id="zoneErrorPrenom"></p>
+				<p id="zoneErrorNom"></p>
+	
 	
 			</form>
-
 		</div>
+	</section>
 
-		
+	<!--section 3 pub -->
 
-		
-		
-
+	<section id="section3">
+				<div id="divPub"></div>
 	</section>
 
 
@@ -141,19 +157,62 @@
 		<p>Site réalisé par Jally Phejar 2019 - 2020</p>
 	</footer>
 
+</div><!--div containerAll-->
 
-	<!-- mes liens -->
+	
+
+	
 	<!-- jQuery -->
 	<script type="text/javascript" src="public/js/jquery-3.4.1.js"></script>
+	<!-- Custom JS -->
+	<script type="text/javascript">
+	function reserverVelo(adress){
+		var input = document.getElementById('adresseMapInput');
+		var p = document.getElementById('adresseMap');
+		p.innerHTML = adress;
+		input.value = adress;
+	}
+
+	// var inputPrenom = document.getElementById("inputPrenom").value;
+	// 		var inputNom = document.getElementById("inputNom").value;
+	// 		var inputAdresse = document.getElementById("adresseMapInput").value;
+	// $(document).ready(function(){
+	// 	// if(sessionStorage.getItem('nom')){
+	// 	// 	document.getElementById('zoneTimer').style.display = 'block';
+	// 	// 	var timer = new Timer();
+	// 	// }
+	// });
+
+			
+			// var nom = sessionStorage.getItem('nom');
+			// var date1 = sessionStorage.getItem('date1');
+			// var date2 = Date.now();
+			// var diff = date2 - date1;
+			
+			//récup de données des input
+			let storagePrenom = sessionStorage.getItem('prenom');
+			let storageNom = sessionStorage.getItem('nom');
+			let storageAdresse = sessionStorage.getItem('adresse');
+
+			if (storagePrenom && storageNom && storageAdresse){
+				//console.log("storage rempli déjà!");
+
+				document.getElementById("inputPrenom").value = storagePrenom;
+				document.getElementById("inputNom").value = storageNom;
+				document.getElementById("adresseMap").textContent = storageAdresse;
+			}
+	</script>
+	<!-- mes liens -->
+	
 	<!-- mapbox -->
 	<script src='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
 	<script src='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
-
 	<!-- timer -->
 	<script type="text/javascript" src="public/js/Timer.js">
 	</script>
-	<!-- sketch -->
-	<script type="text/javascript" src="public/js/Sketch.js"></script>
+	<!-- html canvas -->
+	<!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+    <script type="text/javascript" src="public/js/Canvas.js"></script>
 	<!-- form -->
 	<script type="text/javascript" src="public/js/Form.js"></script>
 	<!-- map -->

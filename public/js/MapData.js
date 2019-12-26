@@ -25,7 +25,7 @@ class MapData  {
 		     style: 'mapbox://styles/mapbox/streets-v11',
 		     //coordonnées Toulouse
 		     center: [1.433333, 43.600000],
-		 	zoom: 12
+		 	zoom: 13
 
 		   })
 	
@@ -48,6 +48,7 @@ class MapData  {
 						var long = markers[i]["position"]["lng"];
 						var address = markers[i]["address"];
 						var availableBikes = markers[i]["available_bikes"];
+						var status = markers[i]["status"];
 						
 
 						var geojson = {
@@ -60,8 +61,11 @@ class MapData  {
 						    },
 						    properties: {
 						      title : address,
-						      description: availableBikes + " vélos libres"
-						      
+						      description: availableBikes + " vélos libres<br/>" 
+						      + "station : " + status + 
+						      "<br/><span id='reserverVelo' onclick='reserverVelo(`"+address+"`);'>Réserver</span>",
+						     
+						     
 						    }
 						  },
 						 ]
@@ -74,15 +78,17 @@ class MapData  {
 						  var el = document.createElement('i');
 						  //el.innerHTML = "<i class="fas fa-map-marker-alt"></i>";
 						  el.className = 'fas fa-map-marker-alt fa-2x';
-						 
+						 //afficher adresse sélectionné
+						// var zoneAddress = document.getElementById('adresseMap');
+						// zoneAddress.innerHTML = marker.properties.title;
+
 						  new mapboxgl.Marker(el)
 						    .setLngLat(geojson["features"][0]["geometry"]["coordinates"])
 						    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-		    				.setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+		    				.setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>' ))
 						    .addTo(map);
 						});
-
-						
+					
 
 
 		}

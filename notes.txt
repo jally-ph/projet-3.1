@@ -39,7 +39,7 @@ les images du diapo doivent être des objets
 http://vb.net-informations.com/gui/key-press-vb.htm
 
 
-
+===========================================================================================================
 
 
 
@@ -50,7 +50,15 @@ Add custom markers in Mapbox GL JS
 https://docs.mapbox.com/help/tutorials/markers-js/
 
 
+=====================================================
 
+
+A FAIRE AVANT SOUTENANCE :
+
+
+_ enlever simple sur la page prepareSimpleCanva !!! pr que ça fasse comme si c'est moi qui l'ai fait !!
+
+_ 
 
 
 
