@@ -53,11 +53,8 @@ header { display: flex;
   margin-right: 50px;
 }
 
-nav {
-	
-}
 
-nav ul {
+/*nav ul {
 	display: flex;
   justify-content: space-between;
     
@@ -72,7 +69,7 @@ nav ul {
   background-color: white;
 	
 }
-
+*/
 
 
 /* diaporama */

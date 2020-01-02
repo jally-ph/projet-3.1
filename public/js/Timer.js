@@ -7,11 +7,11 @@ class Timer {
 		
 		var timerElt = document.getElementById("timer");
 		var date1 = sessionStorage.getItem('date1');
-			var date2 = Date.now();
-			var diff = Math.round((date2 - date1)/60000);
+		var date2 = Date.now();
+		var diff = Math.round((date2 - date1)/60000);
 
-			var min = 20 - diff;
-			var sec = 0;
+		var min = 20 - diff;
+		var sec = 0;
 
 		var timer = setInterval(function(){start()}, 1000);
 
