@@ -13,9 +13,8 @@ class Canvas {
 		var paint;
 		var canvas;
 		var context;
-		/**
-		* Creates a canvas element.
-		*/
+
+		/* Creates a canvas element*/
 		function executeCanvas()
 		{
 			// Create the canvas (Neccessary for IE because it doesn't know what a canvas element is)
@@ -135,11 +134,9 @@ class Canvas {
 			}
 		}
 
-		
 		executeCanvas();
 
 	}
 
 }
 
-/**/

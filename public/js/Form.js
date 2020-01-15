@@ -42,32 +42,32 @@ class Form{
 
 			if (!(inputNom ==='' || inputNom == null) && !(inputPrenom === '' || inputPrenom == null)){
 				
-				var canvas = document.getElementById('canvasDiv');
-				canvas.style.display = 'block';
-
-
-				// var storagePrenom = sessionStorage.getItem('prenom');
-				// var storageNom = sessionStorage.getItem('nom');
-				// var storageAdresse = sessionStorage.getItem('adresse');
-
-				// if (isset(storagePrenom) && isset(storageNom) && isset(storageAdresse)){
-				// 	console.log("storage rempli déjà!");
-
-				// 	storagePrenom = document.getElementById("inputPrenom").value;
-				// 	storageNom = document.getElementById("inputNom").value;
-				// 	storageAdresse = document.getElementById("inputAdresse").value;
-				// }
-
-				//session storage
-				sessionStorage.setItem("prenom", inputPrenom);
-				sessionStorage.setItem("nom", inputNom);
-				sessionStorage.setItem("adresse", inputAdresse);
-				sessionStorage.setItem("date1", Date.now());
-
+				var reg = /\s|\n|\d|&|\[|\]|\(|\)|\{|\}|\#|@|=|\+|°|\$|£|¤|%|µ|§|!|:|\/|\\|;|\.|,|\?|<|>|²|\*/;
+				var testNom = inputNom.match(reg);
+				var testPrenom = inputPrenom.match(reg);
 				
-				//ancien btn
-				document.getElementById('btnReserv').style.display = 'none';
-	
+
+				if (testNom !== null || testPrenom !== null){
+					errorNom.textContent = 'Champ nom ou prénom invalide : vérifier que des espaces ou des caractères spéciaux ne soient pas contenus dans votre saisie.';
+				}
+
+				if (testNom == null && testPrenom == null){
+
+					var canvas = document.getElementById('canvasDiv');
+					canvas.style.display = 'block';
+
+					//session storage
+					localStorage.setItem("prenom", inputPrenom);
+					localStorage.setItem("nom", inputNom);
+					sessionStorage.setItem("adresse", inputAdresse);
+					sessionStorage.setItem("date1", Date.now());
+					
+					//ancien btn
+					document.getElementById('btnReserv').style.display = 'none';
+		
+
+				}
+				
 			}
 
 		});

@@ -1,10 +1,7 @@
 class Timer {
 
-	constructor() {
-		//document.getElementById("zoneTimer").style.display = "none";
-		
-		
-		
+	constructor() {		
+
 		var timerElt = document.getElementById("timer");
 		var date1 = sessionStorage.getItem('date1');
 		var date2 = Date.now();
@@ -28,8 +25,8 @@ class Timer {
 			}
 
 			if (min <= 0 && sec <= 0){
-				sessionStorage.removeItem('prenom');
-				sessionStorage.removeItem('nom');
+				localStorage.removeItem('prenom');
+				localStorage.removeItem('nom');
 				sessionStorage.removeItem('adresse');
 				document.getElementById('zoneTimer').style.display = 'none';
 				document.getElementById('btnConfirm').style.display = 'none';

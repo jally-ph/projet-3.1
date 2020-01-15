@@ -63,7 +63,7 @@ class MapData  {
 						      title : address,
 						      description: availableBikes + " vélos libres<br/>" 
 						      + "station : " + status + 
-						      "<br/><span id='reserverVelo' onclick='reserverVelo(`"+address+"`);'>Réserver</span>",
+						      "<br/><p id='reserverVelo' onclick='reserverVelo(`"+address+"`);'>Réserver</p>",
 						     
 						     
 						    }
@@ -76,12 +76,8 @@ class MapData  {
 						geojson.features.forEach(function(marker) {
 
 						  var el = document.createElement('i');
-						  //el.innerHTML = "<i class="fas fa-map-marker-alt"></i>";
 						  el.className = 'fas fa-map-marker-alt fa-2x';
-						 //afficher adresse sélectionné
-						// var zoneAddress = document.getElementById('adresseMap');
-						// zoneAddress.innerHTML = marker.properties.title;
-
+						 
 						  new mapboxgl.Marker(el)
 						    .setLngLat(geojson["features"][0]["geometry"]["coordinates"])
 						    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups

@@ -53,33 +53,16 @@ header { display: flex;
   margin-right: 50px;
 }
 
-
-/*nav ul {
-	display: flex;
-  justify-content: space-between;
-    
-}
-
-.nav-pills>li>a {
-  color: #4a4a4a;
-  font-size: 1.4em;
-}
-
-.nav-pills>li>a:hover {
-  background-color: white;
-	
-}
-*/
-
-
 /* diaporama */
 
 #section1{
   display: flex;
+  flex-direction: column;
   margin: 42px 0px 50px 0px;
   padding: 100px 0px;
   background: url("../img/bike2.jpg") no-repeat;
   background-position:right bottom;
+  
 }
 
 #titleDiapo{
@@ -87,7 +70,6 @@ header { display: flex;
 }
 
 #slider {
-	position: relative;
 	width: 700px;
 	height: 400px;
 	margin: auto;
@@ -151,6 +133,10 @@ header { display: flex;
 
 
 /* map */
+#section2 {
+    height: 1000px;
+}
+
 .fa-map-marker-alt {
   color: #4c66ee;
   cursor: pointer;
@@ -170,17 +156,25 @@ header { display: flex;
   font-size: 1em;
 }
 
-/* form + canvas */
+#reserverVelo{
+  cursor: pointer;
+  margin: 5px;
+  padding: 5px;
+  background-color: #a8d067;
+  color: white;
+  border-radius: 5px;
 
-/*#canvas {
-  background-color: white;
-  border: 1px solid black;
-}*/
+}
+
+#reserverVelo:hover{
+  background-color: #4c66ee;
+}
 
 #zoneReservation {
   display: flex;
   justify-content: center;
   margin: 40px 20px 40px 20px;
+
 }
 
 #zoneReservation form {
@@ -248,11 +242,8 @@ canvas#canvas{
 }
 
 
-/*section 3*/
+/*section 3 footer*/
 
-#section3{
-  /*background: url("../img/pub1.jpg");*/
-}
 
 #divPub{
     background: url(../img/pub1.png) no-repeat;
