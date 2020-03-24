@@ -6,14 +6,16 @@
 
 /* 1. Basics*/
 
-body {
-	
+.displayNone{
+  display: none;
 }
 
 #containerAll{
   background-color: white;
   color: #4a4a4a;
   font-family: 'Jaldi', sans-serif;
+  position: relative;
+  height: 3300px;
 }
 
 img {
@@ -76,6 +78,7 @@ header { display: flex;
 	display: flex;
     align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .sliderImg {
@@ -99,29 +102,26 @@ header { display: flex;
     border: none;
     padding: 45px;
   color: white;
-  opacity:0;
 }
 
-.sliderBtn:hover {
-   opacity:0.7;
+#chevronLeft, #chevronRight{
+  z-index: 4;
+  font-size: 2.5em;
+  color: black;
 }
 
 #chevronLeft{
-    left : 0px;
-    z-index: 4;
+  left : 0px;
 }
 #chevronRight{
   right : 0px;
-   z-index: 4;
 }
 
-#chevronLeft:hover {
-  opacity: 0.7;
-}
-#chevronRight:hover {
-  opacity: 0.7;
-}
-
+#pause, #play{
+  color: black;
+  font-size: 3em;
+  opacity: 0;
+}  
 
 #pause {
   z-index: 4;
@@ -131,10 +131,13 @@ header { display: flex;
   z-index: 3;
 }
 
+#pause:hover, #play:hover{
+  opacity:0.7;
+}
 
 /* map */
 #section2 {
-    height: 1000px;
+    height: 1200px;
 }
 
 .fa-map-marker-alt {
@@ -201,12 +204,25 @@ header { display: flex;
     border-radius: 10px;
 }
 
-canvas#canvas{
+/*canvas#canvas{
   width: 100%;background: #FFF;margin-top: 10px;
   border: 1px solid #e6e6e6fa;
+}*/
+
+#sig-canvas {
+  border: 2px dotted #CCCCCC;
+  border-radius: 15px;
+  cursor: crosshair;
+  
 }
 
-#btnReserv, #btnValid, #btnConfirm, #clearCanvas, #btnCancel {
+/*#canvasDiv{
+  width: 100%;
+
+}*/
+
+
+#btnReserv, #btnValid, #btnNewOrder, #clearCanvas {
   background-color: #9cc952e0;
   border-radius: 10px;
   padding: 10px;
@@ -241,25 +257,25 @@ canvas#canvas{
     font-size: 1.3em;
 }
 
-
 /*section 3 footer*/
-
-
 #divPub{
     background: url(../img/pub1.png) no-repeat;
     width: 100%;
     height: 400px;
     background-position: right bottom;
-    margin: 200px 0px 0px 0px;
+    margin: 360px 0px 0px 0px;
 }
 
 
 /* footer */
 footer {
-	margin: 30px 60px 0px 60px;
+	/*margin: 30px 60px 0px 60px;*/
 	display: flex;
 	justify-content: center;
 	color: gray;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }
 
 

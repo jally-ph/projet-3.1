@@ -2,46 +2,70 @@ class Timer {
 
 	constructor() {		
 
-		var timerElt = document.getElementById("timer");
-		var date1 = sessionStorage.getItem('date1');
-		var date2 = Date.now();
-		var diff = Math.round((date2 - date1)/60000);
+		this.timerElt = document.getElementById("timer");
+		this.date1 = sessionStorage.getItem('date1');
+		this.date2 = Date.now();
+		this.diff = Math.round((this.date2 - this.date1)/60000);
 
-		var min = 20 - diff;
-		var sec = 0;
-
-		var timer = setInterval(function(){start()}, 1000);
-
-		function start() {
-
-			if (sec <= 0){
-				min--;
-				sec = 59;
-			}
-
-			else{
-				sec--;
-				//fonctionne pas avec diff car, après 0 on va dans les négatifs. 
-			}
-
-			if (min <= 0 && sec <= 0){
-				localStorage.removeItem('prenom');
-				localStorage.removeItem('nom');
-				sessionStorage.removeItem('adresse');
-				document.getElementById('zoneTimer').style.display = 'none';
-				document.getElementById('btnConfirm').style.display = 'none';
-				document.getElementById('btnCancel').style.display = 'none';
-				
-			}
-
-			timerElt.textContent = min + " : " + sec;
-		
+		//si var min et sec n'existe pas déjà, mais si elles existent, on récup session
+		if (sessionStorage.timerMin && sessionStorage.timerSec){
+			this.min = sessionStorage.timerMin;
+			this.sec = sessionStorage.timerSec;
 
 		}
+		else{
+			this.min = 20 - this.diff; //dif ?? nécessaire?
+			this.sec = 0;
+		}
+
+		let that = this;
+		this.timer = setInterval(function(){that.start()}, 1000);
+
 	}
 
 
-	
+	start() {
+
+		if (this.sec <= 0){
+			this.min--;
+			this.sec = 59;
+		}
+
+		else{
+			this.sec--;
+		}
+
+		sessionStorage.setItem("timerMin", this.min);
+		sessionStorage.setItem("timerSec", this.sec);
+
+		if (this.min <= 0 && this.sec <= 0){
+			//dans localstorage, nom et prénom ne restent pas
+			localStorage.removeItem('prenom');
+			localStorage.removeItem('nom');
+			sessionStorage.removeItem('adresse');
+			document.getElementById('zoneTimer').style.display = 'none';
+			
+			sessionStorage.removeItem('timerMin');
+			sessionStorage.removeItem('timerSec');
+			clearInterval(this.timer);
+			
+		}
+
+		var textmin = this.min;
+		var textsec = this.sec;
+
+		if(this.min<10){
+			textmin = "0" + this.min;
+		}
+		if(this.sec<10){
+			textsec = "0" + this.sec;
+		}
+		this.timerElt.textContent = textmin + " : " + textsec;
+
+
+		
+
+	}
 
 }
 
