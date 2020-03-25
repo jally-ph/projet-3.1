@@ -1,65 +1,73 @@
 class Canvas {
 
-  constructor(canvas, mousePos, lastPos){
-    console.log(this);
-  
+	constructor() {
+		
+		this.canvasWidth = 300;
+		this.canvasHeight = 200;
+		this.padding = 10;
+		this.lineWidth = 8;
+		this.clickX = new Array();
+		this.clickY = new Array();
+		this.clickDrag = new Array();
+		this.paint;
+		this.canvas;
+		this.context;
 
+	}
 
+	/* Creates a canvas element*/
+	executeCanvas(){
+		// Create the canvas (Neccessary for IE because it doesn't know what a canvas element is)
+		var canvasDiv = document.getElementById('canvasDiv');
+		this.canvas = document.createElement('canvas');
+		this.canvas.setAttribute('width', this.canvasWidth);
+		this.canvas.setAttribute('height', this.canvasHeight);
+		this.canvas.setAttribute('id', 'canvas');
+		canvasDiv.appendChild(this.canvas);
+		if(typeof G_vmlCanvasManager != 'undefined') {
+			this.canvas = G_vmlCanvasManager.initElement(this.canvas);
+		}
+		this.context = this.canvas.getContext("2d");
+	}
 
-    // this.drawLoop();
+	addClick(x, y, dragging){
+		// console.log(this.clickX);
+		this.clickX.push(x);
+		this.clickY.push(y);
+		this.clickDrag.push(dragging);
+	}
 
-    
-    this.canvas = canvas;
-    this.rect = canvas.getBoundingClientRect();
-    this.mousePos = mousePos;
-    this.lastPos = lastPos;
+	clearCanvas(){
+		this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+	}
 
-  }
- 
-  
-  drawLoop(drawing) {
-        requestAnimFrame(this.drawLoop);
-        this.renderCanvas(drawing);
-        // console.log("hey A!");
-  };
+	redraw(){
+		this.clearCanvas();
+		
+		var radius = 3;
+		this.context.strokeStyle = "black";
+		this.context.lineJoin = "round";
+		this.context.lineWidth = radius;
 
-
-
-  getMousePos(canvasDom, mouseEvent) {
-    
-    return {
-      x: mouseEvent.clientX - this.rect.left,
-      y: mouseEvent.clientY - this.rect.top
-    }
-  }
-
-  getTouchPos(canvasDom, touchEvent) {
-    return {
-      x: touchEvent.touches[0].clientX - this.rect.left,
-      y: touchEvent.touches[0].clientY - this.rect.top
-    }
-  }
-
-  renderCanvas(drawing) {
-    // console.log("hey C1!");
-    console.log(drawing);
-    // console.log(this.rect);
-    if (drawing) {
-      ctx.moveTo(this.lastPos.x, this.lastPos.y);
-      ctx.lineTo(this.mousePos.x, this.mousePos.y);
-      ctx.stroke();
-      this.lastPos = this.mousePos;
-      // console.log("drawing there!!!!");
-    }
-  }
-
-  clearCanvas() {
-    this.canvas.width = this.canvas.width;
-  }
-
-  
-
+		for(var i=0; i < this.clickX.length; i++)
+		{		
+			this.context.beginPath();
+			if(this.clickDrag[i] && i){
+				this.context.moveTo(this.clickX[i-1], this.clickY[i-1]); //0,0
+			}else{
+				this.context.moveTo(this.clickX[i]-1, this.clickY[i]);
+			}
+			this.context.lineTo(this.clickX[i], this.clickY[i]);
+			this.context.closePath();
+			this.context.stroke();
+		}
+	}
 
 }
 
-		
+
+////////////////////////////////////////////////////////////////////////////////////main!!!
+
+
+
+

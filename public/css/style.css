@@ -204,25 +204,25 @@ header { display: flex;
     border-radius: 10px;
 }
 
-/*canvas#canvas{
+canvas#canvas{
   width: 100%;background: #FFF;margin-top: 10px;
   border: 1px solid #e6e6e6fa;
-}*/
+}
 
-#sig-canvas {
+/*#sig-canvas {
   border: 2px dotted #CCCCCC;
   border-radius: 15px;
   cursor: crosshair;
   
-}
-
-/*#canvasDiv{
+}*/
+/*
+#canvasDiv{
   width: 100%;
 
 }*/
 
-
-#btnReserv, #btnValid, #btnNewOrder, #clearCanvas {
+/*#btnCancel*/
+#btnReserv, #btnValid, #btnConfirm,#btnNewOrder, #clearCanvas,  {
   background-color: #9cc952e0;
   border-radius: 10px;
   padding: 10px;

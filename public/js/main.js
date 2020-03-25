@@ -21,7 +21,7 @@ function reserverVelo(adress){
 var slides = document.getElementsByClassName("sliderImg");
 var diapo = new Diapo(slides);
 diapo.change();
-console.log();
+
 
 //chevrons
 if ($("#chevronRight").click(function(){
@@ -67,117 +67,189 @@ if ($("#play").click(function() {
 //===========================================================================================CANVA
 
 	
+// var canvasObjet = new Canvas;
+// var canvas = document.getElementById("sig-canvas");
+// var ctx = this.canvas.getContext("2d");
+// ctx.strokeStyle = "#222222";
+// ctx.lineWidth = 4;
+
+ 
+
+// var drawing = false;
+// var mousePos = {
+// 				x: 0,
+// 				y: 0
+// 				};
+// var lastPos = mousePos;
+
+// canvasObjet.drawLoop();
+  
+
+// canvas.addEventListener("mousedown", function(e) {
+// 		    canvasObjet.drawing = true;
+// 		    canvasObjet.lastPos = canvasObjet.getMousePos(canvasObjet.canvas, e);
+// 		  }, false);
+
+// 		  canvas.addEventListener("mouseup", function(e) {
+// 		    canvasObjet.drawing = false;
+// 		  }, false);
+
+// 		  canvas.addEventListener("mousemove", function(e) {
+// 		    canvasObjet.mousePos = canvasObjet.getMousePos(canvasObjet.canvas, e);
+// 		  }, false);
+
+		  // Add touch event support for mobile
+		//   canvas.addEventListener("touchstart", function(e) {
+
+		//   }, false);
+
+		//   canvas.addEventListener("touchmove", function(e) {
+		//     var touch = e.touches[0];
+		//     var me = new MouseEvent("mousemove", {
+		//       clientX: touch.clientX,
+		//       clientY: touch.clientY
+		//     });
+		//     canvasObjet.canvas.dispatchEvent(me);
+		//   }, false);
+
+		//   canvas.addEventListener("touchstart", function(e) {
+		//     canvasObjet.mousePos = canvasObjet.getTouchPos(canvasObjet.canvas, e);
+		//     var touch = e.touches[0];
+		//     var me = new MouseEvent("mousedown", {
+		//       clientX: touch.clientX,
+		//       clientY: touch.clientY
+		//     });
+		//     canvasObjet.canvas.dispatchEvent(me);
+		//   }, false);
+
+		//   canvas.addEventListener("touchend", function(e) {
+		//     var me = new MouseEvent("mouseup", {});
+		//     canvasObjet.canvas.dispatchEvent(me);
+		//   }, false);
+
+		//     // Prevent scrolling when touching the canvas
+		//   document.body.addEventListener("touchstart", function(e) {
+		//     if (e.target == canvasObjet.canvas) {
+		//       e.preventDefault();
+		//     }
+		//   }, false);
+		//   document.body.addEventListener("touchend", function(e) {
+		//     if (e.target == canvasObjet.canvas) {
+		//       e.preventDefault();
+		//     }
+		//   }, false);
+		//   document.body.addEventListener("touchmove", function(e) {
+		//     if (e.target == canvasObjet.canvas) {
+		//       e.preventDefault();
+		//     }
+		//   }, false);
 
 
-var canvas = document.getElementById("sig-canvas");
-var ctx = canvas.getContext("2d");
-ctx.strokeStyle = "#222222";
-ctx.lineWidth = 4;
+		//   // Set up the UI
+		// var sigText = document.getElementById("sig-dataUrl");
+		//    // var sigImage = document.getElementById("sig-image");
+		// var clearBtn = document.getElementById("sig-clearBtn");
+		//   // var submitBtn = document.getElementById("sig-submitBtn");
+		// clearBtn.addEventListener("click", function(e) {
+		//    canvasObjet.clearCanvas();
+		//     sigText.innerHTML = "Data URL for your signature will go here!";
+		//     // sigImage.setAttribute("src", "");
+		//   }, false);
+		//   // submitBtn.addEventListener("click", function(e) {
+		//   //   var dataUrl = canvas.toDataURL();
+		//   //   sigText.innerHTML = dataUrl;
+		//   //   sigImage.setAttribute("src", dataUrl);
+		//   // }, false);
 
 
 
-  var drawing = false;
-  var mousePos = {
-    x: 0,
-    y: 0
-  };
-  var lastPos = mousePos;
+//CANVA
+var canvas = new Canvas();
+canvas.executeCanvas();
 
-  canvas.addEventListener("mousedown", function(e) {
-    drawing = true;
-    lastPos = canvasObjet.getMousePos(canvas, e);
-    // console.log(lastPos);
-  }, false);
+// Add mouse events
+			// à la plce de e.pageX, mettre : e.scrollTop et e.scrollLeft
+			// ----------------
+			$('#canvas').mousedown(function(e){
+			// Mouse down location
+			var mouseX = e.pageX - this.offsetLeft;
+			var mouseY = e.pageY - this.offsetTop;
+			
+			canvas.paint = true;
+			console.log(mouseX +" / " + mouseY);
+			canvas.addClick(mouseX, mouseY, false);
+			canvas.redraw();
+			});
 
-  canvas.addEventListener("mouseup", function(e) {
-    drawing = false;
-    // console.log("hey 2!");
-  }, false);
+			$('#canvas').mousemove(function(e){
+				if(canvas.paint){
+					canvas.addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+					canvas.redraw();
+			//nouveau btn : valider (apparait si on fait un trait)
+			document.getElementById('btnValid').style.display = 'block';
+				}
+			});
 
-  canvas.addEventListener("mousemove", function(e) {
-    mousePos = canvasObjet.getMousePos(canvas, e);
-    //nouveau btn : valider (apparait si on fait un trait)
-      document.getElementById('btnValid').style.display = 'block';
-      // console.log("hey 3!");
-  }, false);
+			$('#canvas').mouseup(function(e){
+				canvas.paint = false;
+				canvas.redraw();
+			});
 
-  // Add touch event support for mobile
-  canvas.addEventListener("touchstart", function(e) {
+			$('#canvas').mouseleave(function(e){
+				canvas.paint = false;
+			});
 
-  }, false);
+			$('#clearCanvas').mousedown(function(e)
+			{
+				canvas.clickX = new Array();
+				canvas.clickY = new Array();
+				canvas.clickDrag = new Array();
+				canvas.clearCanvas(); 
+			});
 
-  canvas.addEventListener("touchmove", function(e) {
-    var touch = e.touches[0];
-    var me = new MouseEvent("mousemove", {
-      clientX: touch.clientX,
-      clientY: touch.clientY
-    });
-    canvas.dispatchEvent(me);
-  }, false);
+			$("#btnNewOrder").click(function(e){
+				canvas.clickX = new Array();
+				canvas.clickY = new Array();
+				canvas.clickDrag = new Array();
+				canvas.clearCanvas();
+			});
 
-  canvas.addEventListener("touchstart", function(e) {
-    mousePos = canvasObjet.getTouchPos(canvas, e);
-    var touch = e.touches[0];
-    var me = new MouseEvent("mousedown", {
-      clientX: touch.clientX,
-      clientY: touch.clientY
-    });
-    canvas.dispatchEvent(me);
-  }, false);
 
-  canvas.addEventListener("touchend", function(e) {
-    var me = new MouseEvent("mouseup", {});
-    canvas.dispatchEvent(me);
-  }, false);
+// Tactile ::::   Add touch event listeners to canvas element
+canvas.canvas.addEventListener("touchstart", function(e)
+{
+	// Mouse down location
+	var mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX) - this.offsetLeft,
+	mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY) - this.offsetTop;
+	
+	this.paint = true;
+	this.addClick(mouseX, mouseY, false);
+	this.redraw();
+}, false);
 
-  // Prevent scrolling when touching the canvas
-  document.body.addEventListener("touchstart", function(e) {
-    if (e.target == canvas) {
-      e.preventDefault();
-    }
-  }, false);
-  document.body.addEventListener("touchend", function(e) {
-    if (e.target == canvas) {
-      e.preventDefault();
-    }
-  }, false);
-  document.body.addEventListener("touchmove", function(e) {
-    if (e.target == canvas) {
-      e.preventDefault();
-    }
-  }, false);
+canvas.canvas.addEventListener("touchmove", function(e){
+	var mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX) - this.offsetLeft,
+	mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY) - this.offsetTop;
 
-  // Set up the UI
-  // var sigText = document.getElementById("sig-dataUrl");
-  var sigImage = document.getElementById("sig-image");
-  var clearBtn = document.getElementById("sig-clearBtn");
-  // var submitBtn = document.getElementById("sig-submitBtn");
-  clearBtn.addEventListener("click", function(e) {
-    e.preventDefault();
-    canvasObjet.clearCanvas();
-    // sigText.innerHTML = "Data URL for your signature will go here!";
-    //sigImage.setAttribute("src", "");
-  }, false);
-  // submitBtn.addEventListener("click", function(e) {
-  //   var dataUrl = canvas.toDataURL();
-  //   // sigText.innerHTML = dataUrl;
-  //   // sigImage.setAttribute("src", dataUrl);
-  //   console.log("bien reçu la signature!");
-  // }, false);
+	if(this.paint){
+		//nouveau btn : valider (apparait si on fait un trait)
+		document.getElementById('btnValid').style.display = 'block';
+		this.addClick(mouseX, mouseY, true);
+		this.redraw();
+	}
+	e.preventDefault()
+}, false);
 
-window.requestAnimFrame = (function(callback) {
-     return window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.oRequestAnimationFrame ||
-      window.msRequestAnimaitonFrame ||
-      function(callback) {
-        window.setTimeout(callback, 1000 / 60);
-      };
-    })
+canvas.canvas.addEventListener("touchend", function(e){
+	this.paint = false;
+	this.redraw();
+}, false);
 
-var canvasObjet = new Canvas(canvas, mousePos, lastPos);
-canvasObjet.drawLoop(drawing);
+canvas.canvas.addEventListener("touchcancel", function(e){
+	this.paint = false;
+}, false);
+
+
 
 
 
